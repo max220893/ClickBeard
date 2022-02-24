@@ -27,14 +27,12 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-configure imap
 RUN docker-php-ext-install calendar
 
-RUN set -e; docker-php-ext-install -j "$(nproc)" \
-    gd soap imap bcmath mbstring iconv curl sockets \
-    pdo_pgsql \
-    xsl \
-    exif \
-    mysqli pdo pdo_mysql \
-    intl \
-    zip
+# RUN set -e; docker-php-ext-install -j "$(nproc)" \
+#     gd soap imap bcmath mbstring iconv curl sockets \
+#     xsl \
+#     exif \
+#     intl \
+#     zip
 
 RUN apk add --no-cache libmcrypt-dev libmcrypt
 
@@ -79,7 +77,7 @@ RUN rm -rf composer-setup.php
 RUN apk add --update nodejs npm
 
 # install xdebug
-RUN pecl install xdebug-3.0.4
+RUN pecl install xdebug-3.1.3
 RUN docker-php-ext-enable xdebug
 RUN { \
     echo "[xdebug]"; \
