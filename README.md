@@ -1,64 +1,22 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+Sistema de agendamento para barbearia - ClickBeard
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+O dono de uma barbearia te procurou para desenvolver um sistema de agendamento.
+Nesse sistema ele deve poder cadastrar todos os barbeiros (nome, idade e data da contratação) e suas respectivas especialidades (sobrancelha, corte de tesoura, barba, etc...).
+Um barbeiro pode ter mais de uma especialidade.
+A barbearia funciona todos os dias de 8:00h às 18:00h.
+O dono (ADM) precisa visualizar de forma fácil os agendamentos do dia atual e os próximos.
+Os clientes devem se cadastrar no sistema (nome, email e senha).
+Um email deve pertencer somente a um cliente.
+Os clientes devem conseguir fazer login no sistema.
+Após autenticação, o cliente deve selecionar um horário , especialidade e um barbeiro da especialidade escolhida para concluir o agendamento (Atenção: um barbeiro não pode atender dois clientes no mesmo horário)
+Leve em consideração que um atendimento demora exatamente 30 minutos.
+O cliente pode cancelar um agendamento até 2 horas antes do horário marcado.
+O cliente pode visualizar seus agendamentos.
 
-## About Laravel
+Tecnologias obrigatórias: Git, PHP, HTML, CSS, JavaScript e Mysql
+Obs: Caso queira utilizar qualquer outra tecnologia ou framework, fique a vontade, mas as listadas acima devem ser usadas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Será avaliado a lógica de programação, qualidade do código , criatividade para solução dos problemas, entre outros aspectos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Deve ser criado um repositório público no Github (ou bitbucket ) para o projeto com o nome "ClickBeard".
+O link do repositório deve ser enviado para gabriel@clickativo.com.br e thiago@clickativo.com.br até a data 03/03/2022 às 12:00h. Mas fique a vontade para entregar antes caso termine.
