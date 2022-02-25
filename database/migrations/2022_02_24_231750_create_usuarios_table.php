@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('senha');
-            $table->unsignedTinyInteger('admin');
+            $table->unsignedTinyInteger('admin')->nullable();
         });
     }
 
