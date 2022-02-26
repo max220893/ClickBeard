@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agendamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgendamentoController extends Controller
 {
@@ -14,7 +15,17 @@ class AgendamentoController extends Controller
      */
     public function index()
     {
-        //
+        $usuario = Auth::user();
+
+        $data['agendamentos'] = [];
+
+        if ($usuario->admin) {
+            $data['agendamentos'] = Agendamento::All();
+        } else {
+            $data['agendamentos'] = Agendamento::where('usuario_id', $usuario->id)->get();
+        }
+
+        return view('dashboard', $data);
     }
 
     /**

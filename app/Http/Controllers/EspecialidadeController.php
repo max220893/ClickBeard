@@ -14,7 +14,8 @@ class EspecialidadeController extends Controller
      */
     public function index()
     {
-        //
+        $data['especialidades'] = Especialidade::all();
+        return view('telas.especialidades.index', $data);
     }
 
     /**
@@ -24,7 +25,7 @@ class EspecialidadeController extends Controller
      */
     public function create()
     {
-        //
+        return view('telas.especialidades.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class EspecialidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Especialidade::create($request->all());
+        return redirect('especialidades');
     }
 
     /**
@@ -80,6 +82,7 @@ class EspecialidadeController extends Controller
      */
     public function destroy(Especialidade $especialidade)
     {
-        //
+        $especialidade->delete();
+        return redirect('especialidades');
     }
 }
