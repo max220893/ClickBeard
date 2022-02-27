@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Especialidade;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 
 class EspecialidadeController extends Controller
@@ -36,6 +37,9 @@ class EspecialidadeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nome' => ['required', 'string', 'max:255', 'unique:especialidades'],
+        ]);
         Especialidade::create($request->all());
         return redirect('especialidades');
     }
