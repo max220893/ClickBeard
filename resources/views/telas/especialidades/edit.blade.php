@@ -10,19 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                    <form method="POST" action="{{ route('especialidades.store') }}">
+                    <form method="POST" action="{{ route('especialidades.update', $especialidade) }}">
                         @csrf
+                        {{ method_field('PUT') }}
                         <!-- Name -->
                         <div>
                             <x-label for="nome" :value="__('Nome')" />
 
-                            <x-input id="nome" class="block mt-1 w-full" type="text" name="nome" :value="old('email')"
-                                required autofocus />
+                            <x-input id="nome" class="block mt-1 w-full" type="text" name="nome"
+                                value="{{ $especialidade->nome }}" required autofocus />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">
-                                Cadastrar
+                                Editar
                             </x-button>
                         </div>
                     </form>

@@ -64,7 +64,7 @@ class EspecialidadeController extends Controller
     public function edit(Especialidade $especialidade)
     {
         $data['especialidade'] = $especialidade;
-        return view('telas.especialidades.create', $data);
+        return view('telas.especialidades.edit', $data);
     }
 
     /**
@@ -77,9 +77,8 @@ class EspecialidadeController extends Controller
     public function update(Request $request, Especialidade $especialidade)
     {
         $request->validate([
-            'nome' => ['required', 'string', 'max:255', 'unique:especialidades'],
+            'nome' => ['required', 'string', 'max:255', 'unique:especialidades,nome,' . $especialidade->id],
         ]);
-        $especialidade = Especialidade::findOrFail($especialidade->id);
         $especialidade->nome = $request->nome;
         $especialidade->save();
         return redirect('especialidades');
