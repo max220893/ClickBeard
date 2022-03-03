@@ -15,13 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('agendamentos.create')"
+                        :active="request()->routeIs('agendamentos.create')">
+                        {{ __('Agendamentos') }}
+                    </x-nav-link>
                     @if (Auth::user()->admin)
                         <x-nav-link :href="route('especialidades.index')"
                             :active="request()->routeIs('especialidades.*')">
                             {{ __('Especialidades') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('barbeiros.index')"
-                            :active="request()->routeIs('barbeiros.*')">
+                        <x-nav-link :href="route('barbeiros.index')" :active="request()->routeIs('barbeiros.*')">
                             {{ __('Barbeiros') }}
                         </x-nav-link>
                     @endif
@@ -83,14 +86,18 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('especialidades.index')"
-                :active="request()->routeIs('especialidades.index')">
-                {{ __('Especialidades') }}
+            <x-responsive-nav-link :href="route('agendamentos.create')" :active="request()->routeIs('agendamentos.create')">
+                {{ __('Agendamentos') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('barbeiros.index')"
-                :active="request()->routeIs('barbeiros.index')">
-                {{ __('Barbeiros') }}
-            </x-responsive-nav-link>
+            @if (Auth::user()->admin)
+                <x-responsive-nav-link :href="route('especialidades.index')"
+                    :active="request()->routeIs('especialidades.index')">
+                    {{ __('Especialidades') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('barbeiros.index')" :active="request()->routeIs('barbeiros.index')">
+                    {{ __('Barbeiros') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

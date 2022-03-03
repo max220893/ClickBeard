@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Agendamento;
 use App\Models\Barbeiro;
 use App\Models\Especialidade;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -121,7 +122,15 @@ class AgendamentoController extends Controller
      */
     public function destroy(Agendamento $agendamento)
     {
-        //
+        $dataAtual = date('Y-m-d H:i:s');
+        $diferencaHoras = round((strtotime($agendamento->data) - strtotime($dataAtual)) / 3600, 1);
+
+        if ($diferencaHoras > 2) {
+            $agendamento->delete();
+            return redirect('dashboard');
+        } else {
+            throw new Exception("O agendamento não foi cancelado porque faltam menos que duas horas para a realização do serviço agendado.", 403);
+        }
     }
 
     public function barbeiroDisponivel(Request $request)
