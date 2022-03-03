@@ -30,5 +30,9 @@ Route::get('/dashboard', [AgendamentoController::class, 'index'])->middleware(['
 Route::resource('especialidades', EspecialidadeController::class)->middleware(['auth']);
 Route::resource('barbeiros', BarbeiroController::class)->middleware(['auth']);
 
+Route::get('/agendamentos/barbeiro-disponivel', [AgendamentoController::class, 'barbeiroDisponivel'])->middleware(['auth']);
+Route::resource('agendamentos', AgendamentoController::class)->middleware(['auth']);
+
+
 
 require __DIR__ . '/auth.php';

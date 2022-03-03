@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agendamento;
+use App\Models\Barbeiro;
+use App\Models\Especialidade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +37,18 @@ class AgendamentoController extends Controller
      */
     public function create()
     {
-        //
+        $horarios = [];
+        $tempo = "7:30";
+        while ($tempo != "17:30") {
+            $tempo = date("H:i", strtotime('+30 minutes', strtotime($tempo)));
+            $horarios[] = $tempo;
+        }
+
+        $data['horarios'] = $horarios;
+
+        $data['especialidades'] = Especialidade::all();
+
+        return view('telas.agendamento.create', $data);
     }
 
     /**
@@ -46,7 +59,24 @@ class AgendamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->data . ' ' . $request->horario;
+        $data = date("Y-m-d H:i", (strtotime($data)));
+
+        $agendamento = Agendamento::where('data', $data)->where('barbeiro_id', $request->barbeiro)->get();
+
+        throw_if(!$request->barbeiro, 'Barbeiro não selecionado');
+        throw_if(count($agendamento) > 0, 'Barbeiro ocupado nesse horário.');
+
+        $dados = [];
+
+        $dados['data'] = $data;
+        $dados['usuario_id'] = Auth::user()->id;
+        $dados['especialidade_id'] = $request->especialidade;
+        $dados['barbeiro_id'] = $request->barbeiro;
+
+        Agendamento::create($dados);
+
+        return view('dashboard');
     }
 
     /**
@@ -92,5 +122,22 @@ class AgendamentoController extends Controller
     public function destroy(Agendamento $agendamento)
     {
         //
+    }
+
+    public function barbeiroDisponivel(Request $request)
+    {
+        $data = $request->data . ' ' . $request->horario;
+        $especialidadeId = $request->especialidade;
+
+        $especialidade = Especialidade::findOrFail($especialidadeId);
+
+
+        $data = date("Y-m-d H:i", (strtotime($data)));
+
+        $agendamento = Agendamento::where('data', $data)->get()->pluck('barbeiro_id')->toArray();
+
+        $barbeiros = $especialidade->barbeiros()->whereNotIn('id', $agendamento)->get();
+
+        return response()->json($barbeiros);
     }
 }

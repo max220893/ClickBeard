@@ -20,3 +20,10 @@ Será avaliado a lógica de programação, qualidade do código , criatividade p
 
 Deve ser criado um repositório público no Github (ou bitbucket ) para o projeto com o nome "ClickBeard".
 O link do repositório deve ser enviado para gabriel@clickativo.com.br e thiago@clickativo.com.br até a data 03/03/2022 às 12:00h. Mas fique a vontade para entregar antes caso termine.
+
+docker-compose up -d
+
+conectar na imagem criada
+
+composer install
+php artisan migrate

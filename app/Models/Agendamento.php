@@ -12,7 +12,7 @@ class Agendamento extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'especialidade_int',
+        'especialidade_id',
         'usuario_id',
         'barbeiro_id',
         'data'
@@ -20,7 +20,7 @@ class Agendamento extends Model
 
     public function especialidade()
     {
-        return $this->belongsTo(Especialidade::class, 'especialidade_int');
+        return $this->belongsTo(Especialidade::class, 'especialidade_id');
     }
 
     public function usuario()

@@ -19,6 +19,6 @@ class Barbeiro extends Model
 
     public function especialidades()
     {
-        return $this->belongsToMany(Especialidade::class, 'barbeiros_especialidades',  'barbeiro_id', 'especialidade_int');
+        return $this->belongsToMany(Especialidade::class, 'barbeiros_especialidades',  'barbeiro_id', 'especialidade_id');
     }
 }

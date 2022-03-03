@@ -14,4 +14,9 @@ class Especialidade extends Model
     protected $fillable = [
         'nome',
     ];
+
+    public function barbeiros()
+    {
+        return $this->belongsToMany(Barbeiro::class, 'barbeiros_especialidades',  'especialidade_id', 'barbeiro_id');
+    }
 }

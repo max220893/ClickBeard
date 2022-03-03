@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Especialidades') }}
+            {{ __('Barbeiros') }}
         </h2>
     </x-slot>
 
@@ -34,7 +34,7 @@
                         </div>
                         <div class="mt-2">
                             <x-label for="especialidades" :value="__('Especialidades')" />
-                            <select id="especialidades" name="especialidades[]" multiple="multiple" required autofocus>
+                            <select class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="especialidades" name="especialidades[]" multiple="multiple" required autofocus>
                                 @foreach ($especialidades as $especialidade)
                                     <option value="{{ $especialidade->id }}"
                                         @if (in_array($especialidade->id, $barbeiroEspecialidades)) selected @endif>{{ $especialidade->nome }}
