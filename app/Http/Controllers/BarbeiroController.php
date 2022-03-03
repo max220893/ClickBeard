@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barbeiro;
+use App\Models\Especialidade;
 use Illuminate\Http\Request;
 
 class BarbeiroController extends Controller
@@ -14,7 +15,8 @@ class BarbeiroController extends Controller
      */
     public function index()
     {
-        //
+        $data['barbeiros'] = Barbeiro::all();
+        return view('telas.barbeiros.index', $data);
     }
 
     /**
@@ -24,7 +26,8 @@ class BarbeiroController extends Controller
      */
     public function create()
     {
-        //
+        $data['especialidades'] = Especialidade::all();
+        return view('telas.barbeiros.create', $data);
     }
 
     /**
@@ -35,7 +38,14 @@ class BarbeiroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'max:255', 'unique:barbeiros'],
+            'idade' => ['required', 'int', 'min:18', 'max:100'],
+            'data_contratacao' => ['required', 'date'],
+        ]);
+        $barbeiro = Barbeiro::create($request->all());
+        $barbeiro->especialidades()->attach($request->especialidades);
+        return redirect('barbeiros');
     }
 
     /**
@@ -57,7 +67,10 @@ class BarbeiroController extends Controller
      */
     public function edit(Barbeiro $barbeiro)
     {
-        //
+        $data['especialidades'] = Especialidade::all();
+        $data['barbeiro'] = $barbeiro;
+        $data['barbeiroEspecialidades'] = $barbeiro->especialidades()->get()->pluck('id')->toArray();
+        return view('telas.barbeiros.edit', $data);
     }
 
     /**
@@ -69,7 +82,17 @@ class BarbeiroController extends Controller
      */
     public function update(Request $request, Barbeiro $barbeiro)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'max:255', 'unique:barbeiros,nome,' . $barbeiro->id],
+            'idade' => ['required', 'int', 'min:18', 'max:100'],
+            'data_contratacao' => ['required', 'date'],
+        ]);
+        $barbeiro->nome = $request->nome;
+        $barbeiro->idade = $request->idade;
+        $barbeiro->data_contratacao = $request->data_contratacao;
+        $barbeiro->save();
+        $barbeiro->especialidades()->sync($request->especialidades);
+        return redirect('barbeiros');
     }
 
     /**
@@ -80,6 +103,7 @@ class BarbeiroController extends Controller
      */
     public function destroy(Barbeiro $barbeiro)
     {
-        //
+        $barbeiro->delete();
+        return redirect('barbeiros');
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgendamentoController;
 use App\Http\Controllers\EspecialidadeController;
+use App\Http\Controllers\BarbeiroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,7 @@ Route::get('/dashboard', [AgendamentoController::class, 'index'])->middleware(['
     ->name('dashboard');
 
 Route::resource('especialidades', EspecialidadeController::class)->middleware(['auth']);
+Route::resource('barbeiros', BarbeiroController::class)->middleware(['auth']);
 
 
 require __DIR__ . '/auth.php';

@@ -20,6 +20,10 @@
                             :active="request()->routeIs('especialidades.*')">
                             {{ __('Especialidades') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('barbeiros.index')"
+                            :active="request()->routeIs('barbeiros.*')">
+                            {{ __('Barbeiros') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -82,6 +86,10 @@
             <x-responsive-nav-link :href="route('especialidades.index')"
                 :active="request()->routeIs('especialidades.index')">
                 {{ __('Especialidades') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('barbeiros.index')"
+                :active="request()->routeIs('barbeiros.index')">
+                {{ __('Barbeiros') }}
             </x-responsive-nav-link>
         </div>
 
