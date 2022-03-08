@@ -39,10 +39,14 @@ class AgendamentoController extends Controller
     public function create()
     {
         $horarios = [];
-        $tempo = "7:30";
-        while ($tempo != "17:30") {
-            $tempo = date("H:i", strtotime('+30 minutes', strtotime($tempo)));
+        $tempo = "8:00";
+        $horaAtual = date("i") > 30 ? date("H:00", strtotime('+1 hour')) : date("H:30");
+        if ($horaAtual < $tempo) {
+            $tempo = $horaAtual;
+        }
+        while ($tempo != "18:00") {
             $horarios[] = $tempo;
+            $tempo = date("H:i", strtotime('+30 minutes', strtotime($tempo)));
         }
 
         $data['horarios'] = $horarios;
@@ -77,7 +81,7 @@ class AgendamentoController extends Controller
 
         Agendamento::create($dados);
 
-        return view('dashboard');
+        return redirect('dashboard');
     }
 
     /**

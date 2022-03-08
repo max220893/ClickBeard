@@ -27,8 +27,8 @@ Route::get('/', function () {
 Route::get('/dashboard', [AgendamentoController::class, 'index'])->middleware(['auth'])
     ->name('dashboard');
 
-Route::resource('especialidades', EspecialidadeController::class)->middleware(['auth']);
-Route::resource('barbeiros', BarbeiroController::class)->middleware(['auth']);
+Route::resource('especialidades', EspecialidadeController::class)->middleware(['auth', 'admin']);
+Route::resource('barbeiros', BarbeiroController::class)->middleware(['auth', 'admin']);
 
 Route::get('/agendamentos/barbeiro-disponivel', [AgendamentoController::class, 'barbeiroDisponivel'])->middleware(['auth']);
 Route::resource('agendamentos', AgendamentoController::class)->middleware(['auth']);
